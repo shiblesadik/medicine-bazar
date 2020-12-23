@@ -9,21 +9,19 @@ const https = require('https');
 const authService = require('./services/authentication/authenticationService');
 const authRouter = require('./routes/authRoute');
 const medicineRouter = require('./routes/medicineRoute');
+const medicineController = require('./controllers/medicineController');
 
 const corsOption = {
     origin: '*',
     optionsSuccessStatus: 200,
 };
 
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-}
-
 // Middlewares
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 app.all('/*', cors(corsOption));
+app.use('/', medicineController.all);
 app.use('/api/medicine', medicineRouter);
 app.use('/api/auth', authService.verifyLocalToken, authRouter);
 app.all('*', authService.verifyJwtToken);
