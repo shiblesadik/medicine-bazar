@@ -1,0 +1,41 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Software Project 2, Medicine Bazar, Node.js Backend",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/medicine-bazar/backend.git"
+  },
+  "keywords": [
+    "medicine",
+    "bazar",
+    "node",
+    "sp2",
+    "aiub",
+    "backend",
+    "rest",
+    "api"
+  ],
+  "author": "A.T.M. Shible Sadik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/medicine-bazar/backend/issues"
+  },
+  "homepage": "https://gitlab.com/medicine-bazar/backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.8",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.6",
+    "socket.io": "^3.0.4",
+    "validator": "^13.5.2"
+  }
+}
