@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
 const https = require('https');
@@ -9,7 +8,6 @@ const https = require('https');
 const authService = require('./services/authentication/authenticationService');
 const authRouter = require('./routes/authRoute');
 const medicineRouter = require('./routes/medicineRoute');
-const medicineController = require('./controllers/medicineController');
 
 const corsOption = {
     origin: '*',
