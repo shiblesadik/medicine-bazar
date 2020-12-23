@@ -21,7 +21,6 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 app.all('/*', cors(corsOption));
-app.use('/', medicineController.all);
 app.use('/api/medicine', medicineRouter);
 app.use('/api/auth', authService.verifyLocalToken, authRouter);
 app.all('*', authService.verifyJwtToken);
