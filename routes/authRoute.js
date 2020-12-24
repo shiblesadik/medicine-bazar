@@ -8,11 +8,5 @@ const authService = require('../services/authentication/authenticationService');
 
 router.route('/user/register').post(authController.registerOrLoginUser);
 router.route('/user/login').post(authController.registerOrLoginUser);
-router.route('/admin/register').post(authController.registerAdmin);
-router.route('/admin/login').post(authController.loginAdmin);
-router.route('/doctor/register').post(authController.registerDoctor);
-router.route('/doctor/login').post(authController.loginDoctor);
-router.route('/deliveryman/register').post(authController.registerDeliveryMan);
-router.route('/deliveryman/login').post(authController.loginDeliveryMan);
-
+router.route('/admin/register').post(authService.verifyJwtToken, authController.registerAdmin);
 module.exports = router;

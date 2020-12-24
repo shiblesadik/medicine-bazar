@@ -24,7 +24,12 @@ const usersSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        default: 'user',
+        default: 'customer',
+    },
+    email: {
+        type: String,
+        required: false,
+        trim: true,
     },
     address: {
         type: String,

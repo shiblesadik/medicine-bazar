@@ -26,25 +26,21 @@ exports.registerOrLoginUser = async (req, res) => {
 };
 
 exports.registerAdmin = async (req, res) => {
-
-};
-
-exports.registerDoctor = async (req, res) => {
-
-};
-
-exports.registerDeliveryMan = async (req, res) => {
-
-};
-
-exports.loginAdmin = async (req, res) => {
-
-};
-
-exports.loginDoctor = async (req, res) => {
-
-};
-
-exports.loginDeliveryMan = async (req, res) => {
-
+    if (req.userData.role !== 'admin') {
+        res.status(404).json({
+            status: 'Unauthorized'
+        });
+        return;
+    }
+    await userService.registerAdminUser(req.body, async (data) => {
+        if (data.email === req.body.email && data.phone === req.body.phone) {
+            res.status(201).json({
+                status: 'success'
+            });
+        } else {
+            res.status(401).json({
+                status: 'failed'
+            });
+        }
+    });
 };

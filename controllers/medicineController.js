@@ -33,6 +33,7 @@ exports.delete = async (req, res) => {
         res.status(401).json({
             error: 'unauthorized'
         });
+        return;
     } else {
         await Medicine.findOneAndDelete({_id: req.params.id}).then(async (data) => {
             console.log(data);
