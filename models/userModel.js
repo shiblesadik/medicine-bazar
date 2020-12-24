@@ -26,6 +26,11 @@ const usersSchema = new mongoose.Schema({
         trim: true,
         default: 'user',
     },
+    address: {
+        type: String,
+        required: false,
+        trim: true,
+    },
     status: {
         type: String,
         required: false,
