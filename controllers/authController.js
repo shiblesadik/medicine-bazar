@@ -44,3 +44,18 @@ exports.registerAdmin = async (req, res) => {
         }
     });
 };
+
+exports.info = async (req, res) => {
+    await userService.informationUser(req.userData, async (data) => {
+        if (data !== null) {
+            res.status(200).json({
+                status: 'success',
+                data: data,
+            });
+        } else {
+            res.status(401).json({
+                status: 'failed'
+            });
+        }
+    });
+};

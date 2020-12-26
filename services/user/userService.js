@@ -16,6 +16,11 @@ exports.registerOrLoginUser = async (info, callback) => {
 };
 
 exports.registerAdminUser = async (info, callback) => {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regex.test(String(info.body.email).toLowerCase())) {
+        callback(null);
+        return;
+    }
     await User.findOne({email: info.email}).then(async (data) => {
         if (data === null || data.phone === info.phone) {
             const user = await new User(info);
@@ -28,7 +33,11 @@ exports.registerAdminUser = async (info, callback) => {
 };
 
 exports.informationUser = async (info, callback) => {
-    await User.findById({_id: info.userId}, {name: 1, phone: 1}).then(async (data) => {
-        callback(data);
+    await User.findById(info.userId).then((data) => {
+        if (data._id === info.userId) {
+            callback(data);
+        } else {
+            callback(null);
+        }
     });
 };

@@ -9,4 +9,5 @@ const authService = require('../services/authentication/authenticationService');
 router.route('/user/register').post(authController.registerOrLoginUser);
 router.route('/user/login').post(authController.registerOrLoginUser);
 router.route('/admin/register').post(authService.verifyJwtToken, authController.registerAdmin);
+router.route('/info').get(authService.verifyJwtToken, authController.info);
 module.exports = router;
