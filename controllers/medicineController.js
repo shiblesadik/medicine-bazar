@@ -50,6 +50,21 @@ exports.delete = async (req, res) => {
     }
 };
 
+exports.danger = async (req, res) => {
+    if (req.userData.role !== 'admin') {
+        res.status(401).json({
+            error: 'unauthorized'
+        });
+    } else {
+        await Medicine.find({count: {$lt: 5},},).sort({count: 1}).then((data) => {
+            res.status(200).json({
+                status: 'success',
+                data: data
+            });
+        });
+    }
+};
+
 exports.insert = async (req, res) => {
     if (req.userData.role !== 'admin') {
         res.status(401).json({

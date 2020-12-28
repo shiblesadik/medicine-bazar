@@ -34,7 +34,7 @@ exports.registerAdminUser = async (info, callback) => {
 
 exports.informationUser = async (info, callback) => {
     await User.findById(info.userId).then((data) => {
-        if (data._id === info.userId) {
+        if (data._id.toString() === info.userId.toString()) {
             callback(data);
         } else {
             callback(null);
