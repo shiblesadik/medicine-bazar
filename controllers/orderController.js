@@ -59,7 +59,7 @@ exports.upload = async (req, res) => {
         for (let i = 0; i < req.files.length; ++i) {
             let path = req.files[0].path.replace(/\\/g, '/');
             path = path.split('storage/').join('/');
-            url.push('http://localhost:11211' + path);
+            url.push('https://medicine-bazar-backend.herokuapp.com' + path);
         }
         if (url.length === 1) {
             url = url[0];
