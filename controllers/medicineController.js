@@ -25,7 +25,21 @@ exports.single = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-
+    if (req.userData.role !== 'admin') {
+        res.status(401).json({
+            error: 'unauthorized'
+        });
+        return;
+    } else {
+        await Medicine.replaceOne({_id: req.params.id}, req.body).then((data) => {
+            if (data !== null) {
+                res.status(201).json({
+                    status: 'success',
+                    data: data
+                });
+            }
+        });
+    }
 };
 
 exports.delete = async (req, res) => {
