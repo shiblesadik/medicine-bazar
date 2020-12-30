@@ -38,13 +38,12 @@ exports.my = async (req, res) => {
 };
 
 exports.insert = async (req, res) => {
-    let totalPrice = 0;
     const data = {
         customerId: req.userData.userId,
         prescription: req.body.prescription,
         address: req.body.address,
         list: req.body.data,
-        total: totalPrice
+        total: req.body.total + 50
     };
     const order = new Order(data);
     await order.save();
