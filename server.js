@@ -1,6 +1,7 @@
 'use strict';
 
 const dotenv = require('dotenv');
+const fs = require('fs');
 
 dotenv.config({
     path: './config.env'
