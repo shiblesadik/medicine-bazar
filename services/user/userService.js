@@ -17,7 +17,7 @@ exports.registerOrLoginUser = async (info, callback) => {
 
 exports.registerAdminUser = async (info, callback) => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regex.test(String(info.body.email).toLowerCase())) {
+    if (!regex.test(String(info.email).toLowerCase())) {
         callback(null);
         return;
     }

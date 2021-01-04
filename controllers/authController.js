@@ -33,7 +33,7 @@ exports.registerAdmin = async (req, res) => {
         return;
     }
     await userService.registerAdminUser(req.body, async (data) => {
-        if (data.email === req.body.email && data.phone === req.body.phone) {
+        if (data.email !== undefined && data.email === req.body.email && data.phone === req.body.phone) {
             res.status(201).json({
                 status: 'success'
             });
@@ -42,6 +42,7 @@ exports.registerAdmin = async (req, res) => {
                 status: 'failed'
             });
         }
+
     });
 };
 
