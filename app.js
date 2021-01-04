@@ -11,6 +11,7 @@ const authRouter = require('./routes/authRoute');
 const medicineRouter = require('./routes/medicineRoute');
 const userRouter = require('./routes/userRoute');
 const orderRouter = require('./routes/orderRoute');
+const doctorRouter = require('./routes/doctorRoute');
 
 const corsOption = {
     origin: '*',
@@ -27,5 +28,6 @@ app.use('/api/auth', authService.verifyLocalToken, authRouter);
 app.all('*', authService.verifyJwtToken);
 app.use('/api/user', userRouter);
 app.use('/api/order', orderRouter);
+app.use('/api/doctor', doctorRouter);
 
 module.exports = app;
