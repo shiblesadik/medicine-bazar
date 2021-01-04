@@ -23,6 +23,7 @@ exports.registerAdminUser = async (info, callback) => {
     }
     await User.findOne({email: info.email}).then(async (data) => {
         if (data === null || data.phone === info.phone) {
+            info.role = info.role.toString().toLowerCase();
             const user = await new User(info);
             await user.save();
             callback(user);
