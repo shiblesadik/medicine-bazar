@@ -38,3 +38,25 @@ exports.permit = async (req, res) => {
         });
     }
 };
+
+exports.get = async (req, res) => {
+    if (req.userData.role !== 'admin') {
+        res.status(404).json({
+            status: "Unauthorized"
+        });
+    } else {
+        await Request.find().then(async (data) => {
+            console.log(data);
+            if (data === null) {
+                res.status(404).json({
+                    status: "failed"
+                });
+            } else {
+                res.status(200).json({
+                    status: "success",
+                    data: data,
+                });
+            }
+        });
+    }
+};
