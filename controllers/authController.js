@@ -11,6 +11,7 @@ exports.registerOrLoginUser = async (req, res) => {
             phone: data.phone,
             name: data.name,
             role: data.role,
+            address: data.address
         };
         const jwtToken = await authService.generateJwtToken(user);
         res.status(201)
@@ -20,6 +21,7 @@ exports.registerOrLoginUser = async (req, res) => {
                 phone: user.phone,
                 username: user.name,
                 role: user.role,
+                address: user.address,
                 token: jwtToken,
             });
     });
