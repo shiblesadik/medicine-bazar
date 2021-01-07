@@ -53,6 +53,54 @@ exports.insert = async (req, res) => {
     });
 };
 
+exports.permit = async (req, res) => {
+    try {
+        const update = {
+            deliverymanId: req.body.deliverymanId,
+            representativeId: req.userData.userId,
+            status: 'pending'
+        };
+        const order = await Order.updateOne(
+            {_id: req.body.orderId},
+            {
+                $set: update,
+            }
+        );
+        res.status(200).json({
+            status: 'success',
+            data: order,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: error.message
+        });
+    }
+};
+
+exports.update = async (req, res) => {
+    try {
+        const update = {
+            status: req.body.status
+        };
+        const order = await Order.updateOne(
+            {_id: req.body.orderId},
+            {
+                $set: update,
+            }
+        );
+        res.status(200).json({
+            status: 'success',
+            data: order,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'failed',
+            message: error.message
+        });
+    }
+};
+
 exports.upload = async (req, res) => {
     if (req.files) {
         let url = [];

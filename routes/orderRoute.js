@@ -32,6 +32,8 @@ router.route('/review').get(orderController.verify, orderController.search);
 router.route('/complain').get(orderController.verify, orderController.search);
 router.route('/my').get(orderController.my);
 router.route('/insert').post(orderController.insert);
+router.route('/permit').post(orderController.verify, orderController.permit);
+router.route('/update').post(orderController.verify, orderController.update);
 // router.route('/upload').post(prescriptionUpload.any(), orderController.upload);
 router.route('/info/:id').get(orderController.verify, orderController.findById);
 
