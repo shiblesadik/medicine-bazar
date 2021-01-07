@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 
 exports.findByRole = async (req, res) => {
-    if (req.userData.role !== 'admin') {
+    if (req.userData.role !== 'admin' && req.userData.role !== 'representative') {
         res.status(401).json({
             status: 'Unauthorized'
         });
