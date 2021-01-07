@@ -28,6 +28,15 @@ exports.findById = async (req, res) => {
     });
 };
 
+exports.deliveryman = async (req, res) => {
+    await Order.find({deliverymanId: req.userData.userId}).sort({date: 1}).then((data) => {
+        res.status(200).json({
+            status: 'success',
+            data: data
+        });
+    });
+};
+
 exports.my = async (req, res) => {
     await Order.find({customerId: req.userData.userId}).sort({date: 1}).then((data) => {
         res.status(200).json({

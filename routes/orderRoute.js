@@ -36,5 +36,6 @@ router.route('/permit').post(orderController.verify, orderController.permit);
 router.route('/update').post(orderController.verify, orderController.update);
 // router.route('/upload').post(prescriptionUpload.any(), orderController.upload);
 router.route('/info/:id').get(orderController.verify, orderController.findById);
+router.route('/deliveryman').get(orderController.verify, orderController.deliveryman);
 
 module.exports = router;
