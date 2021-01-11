@@ -25,7 +25,16 @@ const medicinesSchema = new mongoose.Schema({
         required: false,
         trim: true,
     },
+    type: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     price: {
+        type: Number,
+        required: [true, 'Must have price'],
+    },
+    fullPrice: {
         type: Number,
         required: [true, 'Must have price'],
     },
