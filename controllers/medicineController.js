@@ -80,6 +80,7 @@ exports.danger = async (req, res) => {
 };
 
 exports.insert = async (req, res) => {
+    console.log('called');
     if (req.userData.role !== 'admin') {
         res.status(401).json({
             error: 'unauthorized'
@@ -88,6 +89,7 @@ exports.insert = async (req, res) => {
         await Medicine.findOne({name: req.body.name}).then(async (data) => {
             if (data === null) {
                 try {
+                    console.log(req.body);
                     const medicine = await new Medicine(req.body);
                     await medicine.save();
                     const data = medicine;

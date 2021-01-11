@@ -17,17 +17,17 @@ const medicinesSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        required: false,
+        required: [true, 'Image required'],
         trim: true,
     },
     description: {
         type: String,
-        required: false,
+        required: [true, 'Description required'],
         trim: true,
     },
     type: {
         type: String,
-        required: true,
+        required: [true, 'Type required'],
         trim: true,
     },
     price: {
