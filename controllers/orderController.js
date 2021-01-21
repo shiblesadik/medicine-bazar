@@ -52,7 +52,9 @@ exports.insert = async (req, res) => {
         prescription: req.body.prescription,
         address: req.body.address,
         list: req.body.data,
-        total: req.body.total + 50
+        total: req.body.total + 50,
+        payment: req.body.payment,
+        qr: req.body.qr,
     };
     const order = new Order(data);
     await order.save();

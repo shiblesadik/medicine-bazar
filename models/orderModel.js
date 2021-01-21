@@ -51,6 +51,15 @@ const ordersSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Total Price required'],
         default: 0,
+    },
+    payment: {
+        type: String,
+        required: [true, 'Payment Method required'],
+        default: 'cash'
+    },
+    qr: {
+        type: String,
+        required: false,
     }
 });
 
